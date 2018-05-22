@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/Raynor49/Snake#readme",
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-es2015": "^6.24.1",
     "webpack": "^4.8.3",
     "webpack-cli": "^2.1.3"
   },
