@@ -9,6 +9,6 @@
 // }
 //
 // document.body.appendChild(component());
-$(function() {
+document.addEventListener("DOMContentLoaded", () => {
   
 })
