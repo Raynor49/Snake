@@ -1,7 +1,10 @@
-import Snake from './snake.js'
 
-$(function () {
-  let canvas = $(".canvas")
+$(() => {
+  let canvas = document.getElementById("canvas")
   let ctx = canvas.getContext("2d")
-
 })
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   let canvas = document.getElementById("canvas")
+//   let ctx = canvas.getContext("2d")
+// })
