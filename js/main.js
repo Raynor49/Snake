@@ -9,6 +9,7 @@
 // }
 //
 // document.body.appendChild(component());
-document.addEventListener("DOMContentLoaded", () => {
-  
+$(function () => {
+  let canvas = $(".canvas")
+  let ctx = canvas.getContext("2d")
 })
