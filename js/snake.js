@@ -6,16 +6,16 @@ export default class Snake{
   }
 
   draw(ctx){
-    
-    // for (var i = 0; i < this.segmentPositions.length; i++) {
-    //   ctx.beginPath();
-    //   ctx.arc(
-    //     this.segmentPositions[i][0], this.segmentPositions[i][1], 100, 0, 2*Math.PI, false
-    //   );
-    //   ctx.fillStyle = "red"
-    //   ctx.fill()
-    //   ctx.closePath();
-    // }
+
+    for (var i = 0; i < this.segmentPositions.length; i++) {
+      ctx.beginPath();
+      ctx.arc(
+        this.segmentPositions[i].x, this.segmentPositions[i].y, 100, 0, 2*Math.PI, false
+      );
+      ctx.fillStyle = "red"
+      ctx.fill()
+      ctx.closePath();
+    }
   }
 
   head(){
