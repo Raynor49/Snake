@@ -71,17 +71,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./js/coord.js":
-/*!*********************!*\
-  !*** ./js/coord.js ***!
-  \*********************/
-/*! exports provided: default */
-/***/ (function(module, exports) {
-
-eval("throw new Error(\"Module build failed: Error: ENOENT: no such file or directory, open '/Users/raynor/Desktop/Snake/js/coord.js'\\n    at Error (native)\");\n\n//# sourceURL=webpack:///./js/coord.js?");
-
-/***/ }),
-
 /***/ "./js/main.js":
 /*!********************!*\
   !*** ./js/main.js ***!
@@ -90,7 +79,19 @@ eval("throw new Error(\"Module build failed: Error: ENOENT: no such file or dire
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _snake_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./snake.js */ \"./js/snake.js\");\n\n$(() => {\n  let canvas = document.getElementById(\"canvas\")\n  let ctx = canvas.getContext(\"2d\")\n  let snake = new _snake_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n  snake.draw(ctx)\n  snake.grow()\n  snake.draw(ctx)\n})\n\n// document.addEventListener(\"DOMContentLoaded\", () => {\n//   let canvas = document.getElementById(\"canvas\")\n//   let ctx = canvas.getContext(\"2d\")\n// })\n\n\n//# sourceURL=webpack:///./js/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _snake_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./snake.js */ \"./js/snake.js\");\n\n$(() => {\n  let canvas = document.getElementById(\"canvas\")\n  let ctx = canvas.getContext(\"2d\")\n  let snake = new _snake_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n  snake.draw(ctx)\n  snake.grow()\n  snake.draw(ctx)\n  snake.move()\n  snake.draw(ctx)\n})\n\n// document.addEventListener(\"DOMContentLoaded\", () => {\n//   let canvas = document.getElementById(\"canvas\")\n//   let ctx = canvas.getContext(\"2d\")\n// })\n\n\n//# sourceURL=webpack:///./js/main.js?");
+
+/***/ }),
+
+/***/ "./js/segment.js":
+/*!***********************!*\
+  !*** ./js/segment.js ***!
+  \***********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Segment; });\nclass Segment{\n  constructor(x,y,dir){\n    this.pos = [x,y]\n    this.direction = dir\n  }\n\n  move(){\n    if (this.direction = \"N\"){\n      this.pos[1] -= 7\n    }else if(this.direction = \"S\"){\n      this.pos[1] += 7\n    }else if (this.direction = \"E\"){\n      this.pos[0] += 7\n    }else if (this.direction = \"W\"){\n      this.pos[0] -= 7\n    }\n\n  }\n\n  x(){\n    return this.pos[0]\n  }\n\n  y(){\n    return this.pos[1]\n  }\n}\n\n\n//# sourceURL=webpack:///./js/segment.js?");
 
 /***/ }),
 
@@ -102,7 +103,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sna
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Snake; });\n/* harmony import */ var _coord_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./coord.js */ \"./js/coord.js\");\n\nclass Snake{\n  constructor() {\n    this.segments = [new Segment(10,10,\"N\")]\n  }\n\n  draw(ctx){\n    for (var i = 0; i < this.segmentPositions.length; i++) {\n      ctx.beginPath();\n      ctx.arc(\n        this.segments[i].x, this.segments[i].y, 30, 0, 2*Math.PI, false\n      );\n      ctx.fillStyle = \"red\"\n      ctx.fill()\n      ctx.closePath();\n    }\n  }\n\n  head(){\n    return this.segments[this.segments.length-1]\n  }\n\n  grow(){\n\n  }\n\n  move() {\n    for (var i = 0; i < this.segments.length; i++) {\n      this.segments[i].move()\n    }\n  }\n\n\n\n\n}\n\nSnake.DIRECTIONS = {\n  \"N\" : new _coord_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](0,1),\n  \"S\" : new _coord_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](0,-1),\n  \"E\" : new _coord_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](1,0),\n  \"W\" : new _coord_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](-1,0)\n}\n\n\n//# sourceURL=webpack:///./js/snake.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Snake; });\n/* harmony import */ var _segment_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./segment.js */ \"./js/segment.js\");\n\n\nclass Snake{\n  constructor() {\n    this.segments = [new _segment_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](10,10,\"N\")]\n  }\n\n  draw(ctx){\n    for (var i = 0; i < this.segments.length; i++) {\n      ctx.beginPath();\n      ctx.arc(\n        this.segments[i].x(), this.segments[i].y(), 15, 0, 2*Math.PI, false\n      );\n      ctx.fillStyle = \"red\"\n      ctx.fill()\n      ctx.closePath();\n    }\n  }\n\n  head(){\n    return this.segments[0]\n  }\n\n  tail(){\n    return this.segments[this.segments.length-1]\n  }\n\n  grow(){\n    if (this.tail().direction == \"N\"){\n      this.segments.push(new _segment_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](this.tail().x(), this.tail().y() + 7, this.tail().direction))\n    }else if(this.tail().direction == \"S\"){\n      this.segments.push(new _segment_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](this.tail().x(), this.tail().y() - 7, this.tail().direction))\n    }else if(this.tail().direction == \"E\"){\n      this.segments.push(new _segment_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](this.tail().x() - 7, this.tail().y(), this.tail().direction))\n    }else if(this.tail().direction == \"W\"){\n      this.segments.push(new _segment_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](this.tail().x() + 7, this.tail().y(), this.tail().direction))      \n    }\n  }\n\n  move() {\n    for (var i = 0; i < this.segments.length; i++) {\n      this.segments[i].move()\n    }\n  }\n\n\n\n\n}\n\n\n//# sourceURL=webpack:///./js/snake.js?");
 
 /***/ })
 

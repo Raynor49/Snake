@@ -1,14 +1,15 @@
-import Coord from './coord.js';
+
+import Segment from './segment.js'
 export default class Snake{
   constructor() {
     this.segments = [new Segment(10,10,"N")]
   }
 
   draw(ctx){
-    for (var i = 0; i < this.segmentPositions.length; i++) {
+    for (var i = 0; i < this.segments.length; i++) {
       ctx.beginPath();
       ctx.arc(
-        this.segments[i].x, this.segments[i].y, 30, 0, 2*Math.PI, false
+        this.segments[i].x(), this.segments[i].y(), 15, 0, 2*Math.PI, false
       );
       ctx.fillStyle = "red"
       ctx.fill()
@@ -17,11 +18,23 @@ export default class Snake{
   }
 
   head(){
+    return this.segments[0]
+  }
+
+  tail(){
     return this.segments[this.segments.length-1]
   }
 
   grow(){
-
+    if (this.tail().direction == "N"){
+      this.segments.push(new Segment(this.tail().x(), this.tail().y() + 7, this.tail().direction))
+    }else if(this.tail().direction == "S"){
+      this.segments.push(new Segment(this.tail().x(), this.tail().y() - 7, this.tail().direction))
+    }else if(this.tail().direction == "E"){
+      this.segments.push(new Segment(this.tail().x() - 7, this.tail().y(), this.tail().direction))
+    }else if(this.tail().direction == "W"){
+      this.segments.push(new Segment(this.tail().x() + 7, this.tail().y(), this.tail().direction))      
+    }
   }
 
   move() {
@@ -33,11 +46,4 @@ export default class Snake{
 
 
 
-}
-
-Snake.DIRECTIONS = {
-  "N" : new Coord(0,1),
-  "S" : new Coord(0,-1),
-  "E" : new Coord(1,0),
-  "W" : new Coord(-1,0)
 }

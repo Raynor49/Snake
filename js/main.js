@@ -6,6 +6,8 @@ $(() => {
   snake.draw(ctx)
   snake.grow()
   snake.draw(ctx)
+  snake.move()
+  snake.draw(ctx)
 })
 
 // document.addEventListener("DOMContentLoaded", () => {
