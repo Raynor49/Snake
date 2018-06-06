@@ -2,19 +2,20 @@ import Coord from './coord.js';
 export default class Snake{
   constructor() {
     this.direction = "N"
-    this.segmentPositions = [new Coord(0,0)]
+    this.segmentPositions = [new Coord(100,100)]
   }
 
   draw(ctx){
-    for (var i = 0; i < this.segmentPositions.length; i++) {
-      ctx.beginPath();
-      ctx.arc(
-        this.segmentPositions[i][0], this.segmentPositions[i][1], 3, 0, 2*Math.PI, false
-      );
-      ctx.fillStyle = 'black'
-      ctx.fill()
-      ctx.closePath();
-    }
+    
+    // for (var i = 0; i < this.segmentPositions.length; i++) {
+    //   ctx.beginPath();
+    //   ctx.arc(
+    //     this.segmentPositions[i][0], this.segmentPositions[i][1], 100, 0, 2*Math.PI, false
+    //   );
+    //   ctx.fillStyle = "red"
+    //   ctx.fill()
+    //   ctx.closePath();
+    // }
   }
 
   head(){

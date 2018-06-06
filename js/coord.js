@@ -9,7 +9,4 @@ export default class Coord{
     this.y += coord2.y
   }
 
-
-
-
 }
