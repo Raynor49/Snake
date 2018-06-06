@@ -4,6 +4,8 @@ $(() => {
   let ctx = canvas.getContext("2d")
   let snake = new Snake
   snake.draw(ctx)
+  snake.grow()
+  snake.draw(ctx)
 })
 
 // document.addEventListener("DOMContentLoaded", () => {

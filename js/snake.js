@@ -1,16 +1,14 @@
 import Coord from './coord.js';
 export default class Snake{
   constructor() {
-    this.direction = "N"
-    this.segmentPositions = [new Coord(100,100)]
+    this.segments = [new Segment(10,10,"N")]
   }
 
   draw(ctx){
-
     for (var i = 0; i < this.segmentPositions.length; i++) {
       ctx.beginPath();
       ctx.arc(
-        this.segmentPositions[i].x, this.segmentPositions[i].y, 100, 0, 2*Math.PI, false
+        this.segments[i].x, this.segments[i].y, 30, 0, 2*Math.PI, false
       );
       ctx.fillStyle = "red"
       ctx.fill()
@@ -19,16 +17,17 @@ export default class Snake{
   }
 
   head(){
-    return this.segmentPositions.last
+    return this.segments[this.segments.length-1]
   }
 
   grow(){
-    this.segmentPositions.unshift()
+
   }
 
   move() {
-    this.segmentPositions.push(this.head().plus(DIRECTIONS[this.direction]))
-    this.segmentPositions.shift()
+    for (var i = 0; i < this.segments.length; i++) {
+      this.segments[i].move()
+    }
   }
 
 

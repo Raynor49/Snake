@@ -76,10 +76,9 @@
   !*** ./js/coord.js ***!
   \*********************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Coord; });\nclass Coord{\n  constructor(x=0, y=0){\n    this.x = x\n    this.y = y\n  }\n\n  plus(coord2){\n    this.x += coord2.x\n    this.y += coord2.y\n  }\n\n}\n\n\n//# sourceURL=webpack:///./js/coord.js?");
+eval("throw new Error(\"Module build failed: Error: ENOENT: no such file or directory, open '/Users/raynor/Desktop/Snake/js/coord.js'\\n    at Error (native)\");\n\n//# sourceURL=webpack:///./js/coord.js?");
 
 /***/ }),
 
@@ -91,7 +90,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _snake_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./snake.js */ \"./js/snake.js\");\n\n$(() => {\n  let canvas = document.getElementById(\"canvas\")\n  let ctx = canvas.getContext(\"2d\")\n  let snake = new _snake_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n  snake.draw(ctx)\n})\n\n// document.addEventListener(\"DOMContentLoaded\", () => {\n//   let canvas = document.getElementById(\"canvas\")\n//   let ctx = canvas.getContext(\"2d\")\n// })\n\n\n//# sourceURL=webpack:///./js/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _snake_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./snake.js */ \"./js/snake.js\");\n\n$(() => {\n  let canvas = document.getElementById(\"canvas\")\n  let ctx = canvas.getContext(\"2d\")\n  let snake = new _snake_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n  snake.draw(ctx)\n  snake.grow()\n  snake.draw(ctx)\n})\n\n// document.addEventListener(\"DOMContentLoaded\", () => {\n//   let canvas = document.getElementById(\"canvas\")\n//   let ctx = canvas.getContext(\"2d\")\n// })\n\n\n//# sourceURL=webpack:///./js/main.js?");
 
 /***/ }),
 
@@ -103,7 +102,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sna
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Snake; });\n/* harmony import */ var _coord_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./coord.js */ \"./js/coord.js\");\n\nclass Snake{\n  constructor() {\n    this.direction = \"N\"\n    this.segmentPositions = [new _coord_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](100,100)]\n  }\n\n  draw(ctx){\n\n    for (var i = 0; i < this.segmentPositions.length; i++) {\n      ctx.beginPath();\n      ctx.arc(\n        this.segmentPositions[i].x, this.segmentPositions[i].y, 100, 0, 2*Math.PI, false\n      );\n      ctx.fillStyle = \"red\"\n      ctx.fill()\n      ctx.closePath();\n    }\n  }\n\n  head(){\n    return this.segmentPositions.last\n  }\n\n  grow(){\n    this.segmentPositions.unshift()\n  }\n\n  move() {\n    this.segmentPositions.push(this.head().plus(DIRECTIONS[this.direction]))\n    this.segmentPositions.shift()\n  }\n\n\n\n\n}\n\nSnake.DIRECTIONS = {\n  \"N\" : new _coord_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](0,1),\n  \"S\" : new _coord_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](0,-1),\n  \"E\" : new _coord_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](1,0),\n  \"W\" : new _coord_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](-1,0)\n}\n\n\n//# sourceURL=webpack:///./js/snake.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Snake; });\n/* harmony import */ var _coord_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./coord.js */ \"./js/coord.js\");\n\nclass Snake{\n  constructor() {\n    this.segments = [new Segment(10,10,\"N\")]\n  }\n\n  draw(ctx){\n    for (var i = 0; i < this.segmentPositions.length; i++) {\n      ctx.beginPath();\n      ctx.arc(\n        this.segments[i].x, this.segments[i].y, 30, 0, 2*Math.PI, false\n      );\n      ctx.fillStyle = \"red\"\n      ctx.fill()\n      ctx.closePath();\n    }\n  }\n\n  head(){\n    return this.segments[this.segments.length-1]\n  }\n\n  grow(){\n\n  }\n\n  move() {\n    for (var i = 0; i < this.segments.length; i++) {\n      this.segments[i].move()\n    }\n  }\n\n\n\n\n}\n\nSnake.DIRECTIONS = {\n  \"N\" : new _coord_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](0,1),\n  \"S\" : new _coord_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](0,-1),\n  \"E\" : new _coord_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](1,0),\n  \"W\" : new _coord_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](-1,0)\n}\n\n\n//# sourceURL=webpack:///./js/snake.js?");
 
 /***/ })
 
