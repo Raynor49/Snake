@@ -7,8 +7,9 @@ export default class Game{
   }
 
   play(){
-    setInterval(this.draw, 1000)
-    setInterval(this.snake.move, 1000)
+    setInterval(this.draw, 8)
+    setInterval(this.snake.move, 8)
+    setInterval(this.snake.grow, 50)
 
   }
 
