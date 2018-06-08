@@ -1,13 +1,9 @@
-import Snake from './snake.js'
+import Game from './game.js'
 $(() => {
   let canvas = document.getElementById("canvas")
   let ctx = canvas.getContext("2d")
-  let snake = new Snake
-  snake.draw(ctx)
-  snake.grow()
-  snake.draw(ctx)
-  snake.move()
-  snake.draw(ctx)
+  let game = new Game(ctx)
+  game.play()
 })
 
 // document.addEventListener("DOMContentLoaded", () => {

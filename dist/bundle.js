@@ -71,6 +71,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./js/game.js":
+/*!********************!*\
+  !*** ./js/game.js ***!
+  \********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Game; });\n/* harmony import */ var _snake_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./snake.js */ \"./js/snake.js\");\n\nclass Game{\n  constructor(ctx){\n    this.ctx = ctx\n    this.snake = new _snake_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n  }\n\n  play(){\n    setInterval(this.draw, 1000)\n    setInterval(this.snake.move, 1000)\n\n  }\n\n  draw(){\n    this.snake.draw(this.ctx)\n  }\n\n\n}\n\n\n//# sourceURL=webpack:///./js/game.js?");
+
+/***/ }),
+
 /***/ "./js/main.js":
 /*!********************!*\
   !*** ./js/main.js ***!
@@ -79,7 +91,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _snake_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./snake.js */ \"./js/snake.js\");\n\n$(() => {\n  let canvas = document.getElementById(\"canvas\")\n  let ctx = canvas.getContext(\"2d\")\n  let snake = new _snake_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n  snake.draw(ctx)\n  snake.grow()\n  snake.draw(ctx)\n  snake.move()\n  snake.draw(ctx)\n})\n\n// document.addEventListener(\"DOMContentLoaded\", () => {\n//   let canvas = document.getElementById(\"canvas\")\n//   let ctx = canvas.getContext(\"2d\")\n// })\n\n\n//# sourceURL=webpack:///./js/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _game_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./game.js */ \"./js/game.js\");\n\n$(() => {\n  let canvas = document.getElementById(\"canvas\")\n  let ctx = canvas.getContext(\"2d\")\n  let game = new _game_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](ctx)\n  game.play()\n})\n\n// document.addEventListener(\"DOMContentLoaded\", () => {\n//   let canvas = document.getElementById(\"canvas\")\n//   let ctx = canvas.getContext(\"2d\")\n// })\n\n\n//# sourceURL=webpack:///./js/main.js?");
 
 /***/ }),
 
