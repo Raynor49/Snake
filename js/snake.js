@@ -2,7 +2,8 @@
 import Segment from './segment.js'
 export default class Snake{
   constructor() {
-    this.segments = [new Segment(10,10,"N")]
+    this.segments = [new Segment(10,10,"E")]
+    this.move = this.move.bind(this)
   }
 
   draw(ctx){
@@ -33,7 +34,7 @@ export default class Snake{
     }else if(this.tail().direction == "E"){
       this.segments.push(new Segment(this.tail().x() - 7, this.tail().y(), this.tail().direction))
     }else if(this.tail().direction == "W"){
-      this.segments.push(new Segment(this.tail().x() + 7, this.tail().y(), this.tail().direction))      
+      this.segments.push(new Segment(this.tail().x() + 7, this.tail().y(), this.tail().direction))
     }
   }
 
